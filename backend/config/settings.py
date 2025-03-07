@@ -9,7 +9,11 @@ SECRET_KEY = 'django-insecure-*e0=mpu!g5+=ux%#k0)=1z5#68fuk_u3yk4eu9lx!k&f$+0#gu
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'todolist-kk92.onrender.com',
+    'localhost',
+    '127.0.0.1',
+] 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
