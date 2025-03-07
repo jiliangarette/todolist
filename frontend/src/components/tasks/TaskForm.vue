@@ -12,10 +12,10 @@
       />
       <button
         @click="$emit('add-task')"
-        :disabled="!modelValue.trim()"
-        class="flex bg-[#FFC107] p-2 m-1 rounded-[12px] justify-center items-center font-semibold cursor-pointer"
+        :disabled="!modelValue.trim() || isLoading"
+        class="flex bg-[#FFC107] p-2 m-1 rounded-[12px] justify-center items-center font-semibold cursor-pointer disabled:opacity-50"
       >
-        <PlusCircle class="w-5 h-5 mr-2" />
+        <PlusCircle :class="{ 'animate-spin': isLoading }" class="w-5 h-5 mr-2" />
         Add
       </button>
     </div>
@@ -31,13 +31,16 @@ defineProps({
     type: String,
     required: true,
   },
+  isLoading: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const inputField = ref(null)
 
 defineEmits(['update:modelValue', 'add-task'])
 
-// Expose focus method to parent
 defineExpose({
   focus: () => {
     inputField.value?.focus()
