@@ -1,6 +1,4 @@
-# Todo List
-
-## API Endpoints
+### API Endpoints
 
 - `GET /api/tasks/`
 - `POST /api/tasks/`
