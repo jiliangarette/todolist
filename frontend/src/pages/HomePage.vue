@@ -4,7 +4,12 @@
     <div class="container mx-auto px-4 pt-24 pb-12 flex-grow">
       <div class="max-w-3xl mx-auto">
         <TaskHeader />
-        <TaskForm v-model="newTaskTitle" @add-task="addTask" ref="addTaskInput" />
+        <TaskForm
+          v-model="newTaskTitle"
+          @add-task="addTask"
+          ref="addTaskInput"
+          :is-loading="isAddingTask"
+        />
         <TaskLoading v-if="loading" />
         <TaskError v-if="error" :message="error" />
         <TaskEmpty v-if="!loading && tasks.length === 0" @focus-add="focusAddTask" />
@@ -47,6 +52,7 @@ const editingTaskId = ref(null)
 const editTaskTitle = ref('')
 const editInput = ref(null)
 const addTaskInput = ref(null)
+const isAddingTask = ref(false)
 
 const completedTasksCount = computed(() => {
   return tasks.value.filter((task) => task.completed).length
@@ -70,6 +76,7 @@ const fetchTasks = async () => {
 const addTask = async () => {
   if (!newTaskTitle.value.trim()) return
 
+  isAddingTask.value = true
   try {
     const response = await axios.post('/api/tasks/', {
       title: newTaskTitle.value.trim(),
@@ -80,6 +87,8 @@ const addTask = async () => {
   } catch (error) {
     console.error('Error adding task:', error)
     error.value = 'Failed to add task. Please try again.'
+  } finally {
+    isAddingTask.value = false
   }
 }
 
