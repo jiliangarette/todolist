@@ -1,24 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/pages/HomePage.vue'
-import NotFoundPage from '@/pages/NotFoundPage.vue'
+import LoginPage from '@/pages/LoginPage.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'library',
+    name: 'Home',
     component: HomePage,
   },
   {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
-    component: NotFoundPage,
+    path: '/login',
+    name: 'Login',
+    component: LoginPage,
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  linkActiveClass: 'link-active',
 })
 
 export default router
