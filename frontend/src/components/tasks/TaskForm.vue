@@ -15,7 +15,7 @@
         :disabled="!modelValue.trim() || isLoading"
         class="flex bg-[#FFC107] p-2 m-1 rounded-[12px] justify-center items-center font-semibold cursor-pointer disabled:opacity-50"
       >
-        <PlusCircle :class="{ 'animate-spin': isLoading }" class="w-5 h-5 mr-2" />
+        <PlusCircle :class="{ 'loading-spin': isLoading }" class="w-5 h-5 mr-2" />
         Add
       </button>
     </div>
@@ -47,3 +47,18 @@ defineExpose({
   },
 })
 </script>
+
+<style scoped>
+.loading-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
