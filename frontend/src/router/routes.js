@@ -1,24 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '@/pages/HomePage.vue'
-import NotFoundPage from '@/pages/NotFoundPage.vue'
+import HomePage from '../pages/HomePage.vue'
+import TodoPage from '../pages/TodoPage.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'library',
+    name: 'Home',
     component: HomePage,
   },
   {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
-    component: NotFoundPage,
+    path: '/todos',
+    name: 'Todos',
+    component: TodoPage,
+    meta: { requiresAuth: true },
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  linkActiveClass: 'link-active',
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !localStorage.getItem('token')) {
+    next('/')
+  } else {
+    next()
+  }
 })
 
 export default router
