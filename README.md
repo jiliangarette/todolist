@@ -1,26 +1,21 @@
-# Todo List with Django REST Framework
-
-A simple Todo List API with authentication support.
+# Todo List
 
 ## API Endpoints
 
-### Tasks
+- `GET /api/tasks/`
+- `POST /api/tasks/`
+- `GET /api/tasks/<id>/`
+- `PUT /api/tasks/<id>/`
+- `DELETE /api/tasks/<id>/`
 
-- `GET /api/tasks/` - List all tasks
-- `POST /api/tasks/` - Create a new task
-- `GET /api/tasks/<id>/` - Get a specific task
-- `PUT /api/tasks/<id>/` - Update a task
-- `DELETE /api/tasks/<id>/` - Delete a task
+### backend :
 
-### Authentication
+`django`
+`rest_framework`
+`aws rds`
 
-- `GET /api/auth/login/` - Login page
-- `GET /api/auth/logout/` - Logout
-- `GET /admin/` - Admin interface
+### frontend :
 
-## Features
-
-- Create, read, update, and delete tasks
-- Optional user authentication
-- Anonymous users can create tasks
-- Logged-in users can manage their own tasks
+`vue`
+`axios`
+`tailwind`
