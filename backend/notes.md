@@ -1,0 +1,1 @@
+check database in aws from terminal : `psql -h todolist.cti26uqc8nx6.ap-southeast-2.rds.amazonaws.com -U Jgarette0 -d postgres -p 5432`
